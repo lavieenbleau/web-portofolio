@@ -77,12 +77,20 @@ export function Hero() {
           >
             <Link 
               href="#projects" 
+              onClick={(e) => {
+                e.preventDefault()
+                document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })
+              }}
               className="px-8 py-4 bg-foreground text-background font-medium rounded-full hover:bg-primary hover:text-white transition-all duration-300 transform hover:-translate-y-1"
             >
               View Projects
             </Link>
             <Link 
               href="#contact" 
+              onClick={(e) => {
+                e.preventDefault()
+                document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })
+              }}
               className="px-8 py-4 bg-transparent border border-border text-foreground font-medium rounded-full hover:border-primary hover:text-primary transition-all duration-300 transform hover:-translate-y-1"
             >
               Contact Me

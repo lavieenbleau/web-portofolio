@@ -3,11 +3,13 @@
 import * as React from "react"
 import Link from "next/link"
 import { useTheme } from "next-themes"
+import { usePathname } from "next/navigation"
 import { motion, useScroll, useMotionValueEvent } from "framer-motion"
 import { Menu, Moon, Sun, X } from "lucide-react"
 
 export function Navbar() {
   const { setTheme, theme } = useTheme()
+  const pathname = usePathname()
   const { scrollY } = useScroll()
   const [isScrolled, setIsScrolled] = React.useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = React.useState(false)
@@ -29,6 +31,18 @@ export function Navbar() {
     { name: "Contact", href: "/#contact" },
   ]
 
+  const handleLinkClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    if (pathname === "/" && href.startsWith("/#")) {
+      e.preventDefault()
+      const targetId = href.substring(2)
+      const element = document.getElementById(targetId)
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth" })
+      }
+    }
+    setIsMobileMenuOpen(false)
+  }
+
   return (
     <motion.header
       className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${
@@ -41,7 +55,7 @@ export function Navbar() {
       transition={{ duration: 0.8, ease: "easeOut" }}
     >
       <div className="container mx-auto px-6 md:px-12 flex items-center justify-between">
-        <Link href="/" className="text-xl font-bold tracking-tighter">
+        <Link href="/" className="text-xl font-bold tracking-tighter" onClick={(e) => handleLinkClick(e, "/")}>
           FAISAL.
         </Link>
 
@@ -51,6 +65,7 @@ export function Navbar() {
             <Link
               key={link.name}
               href={link.href}
+              onClick={(e) => handleLinkClick(e, link.href)}
               className="text-sm font-medium text-neutral-600 dark:text-neutral-400 hover:text-foreground transition-colors"
             >
               {link.name}
@@ -79,7 +94,7 @@ export function Navbar() {
               key={link.name}
               href={link.href}
               className="text-lg font-medium py-2 border-b border-border/50"
-              onClick={() => setIsMobileMenuOpen(false)}
+              onClick={(e) => handleLinkClick(e, link.href)}
             >
               {link.name}
             </Link>
