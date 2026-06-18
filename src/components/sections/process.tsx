@@ -64,7 +64,7 @@ export function Process() {
         <div className="text-center mb-24">
           <h2 className="text-sm font-semibold tracking-[0.2em] uppercase text-primary mb-4">Workflow</h2>
           <h3 className="text-4xl md:text-5xl font-bold mb-4">Creative & Development</h3>
-          <p className="text-neutral-600 dark:text-neutral-400 text-lg max-w-2xl mx-auto">Pendekatan terstruktur dan komprehensif, mulai dari konsep visual grafis hingga pengembangan kode pemrograman.</p>
+          <p className="text-neutral-600 dark:text-neutral-400 text-lg max-w-2xl mx-auto">Proses kerja yang menggabungkan riset, desain, dan pengembangan untuk menciptakan solusi digital yang menarik secara visual, fungsional, dan berorientasi pada pengguna.</p>
         </div>
 
         <div className="relative max-w-4xl mx-auto" ref={containerRef}>
