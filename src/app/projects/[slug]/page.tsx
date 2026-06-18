@@ -29,7 +29,7 @@ export default async function ProjectPage({
   return (
     <article className="min-h-screen bg-background">
       {/* Full-Bleed Hero Section */}
-      <div className="relative w-full h-[60vh] md:h-[80vh] min-h-[500px] flex items-end pb-8 md:pb-16 pt-32">
+      <div className="relative w-full min-h-[70vh] md:min-h-[80vh] flex items-end pb-8 md:pb-16 pt-32">
         {/* Background Image */}
         <div className="absolute inset-0 z-0">
           <Image 
