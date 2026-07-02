@@ -60,8 +60,8 @@ export function About() {
     // Calculate dynamic stats from projects data
     const totalProjects = projects.length
     const uniqueClients = new Set(projects.filter(p => p.client !== "Personal Project").map(p => p.client)).size
-    // Assuming 2 years of experience based on 2025-2026 projects
-    const yearsExp = 2
+    // Assuming 1 year of experience based on projects
+    const yearsExp = 1
 
     animateCounter(projectsRef, totalProjects)
     animateCounter(clientsRef, uniqueClients)
