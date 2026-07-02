@@ -5,7 +5,7 @@ import Link from "next/link"
 import { useTheme } from "next-themes"
 import { usePathname } from "next/navigation"
 import { motion, useScroll, useMotionValueEvent } from "framer-motion"
-import { Menu, Moon, Sun, X } from "lucide-react"
+import { Menu, Moon, Sun, X, Printer } from "lucide-react"
 
 export function Navbar() {
   const { setTheme, theme } = useTheme()
@@ -43,9 +43,13 @@ export function Navbar() {
     setIsMobileMenuOpen(false)
   }
 
+  const handlePrint = () => {
+    window.print()
+  }
+
   return (
     <motion.header
-      className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${
+      className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 print:hidden ${
         isScrolled
           ? "bg-background/80 backdrop-blur-md border-b border-border shadow-sm py-4"
           : "bg-transparent py-6"
@@ -71,10 +75,24 @@ export function Navbar() {
               {link.name}
             </Link>
           ))}
+          <button
+            onClick={handlePrint}
+            className="p-2 rounded-full hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors text-neutral-600 dark:text-neutral-400 hover:text-foreground"
+            title="Save as PDF"
+          >
+            <Printer className="w-4 h-4" />
+          </button>
         </nav>
 
         {/* Mobile Nav Toggle */}
         <div className="md:hidden flex items-center gap-4">
+          <button
+            onClick={handlePrint}
+            className="p-2 rounded-full hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors"
+            title="Save as PDF"
+          >
+            <Printer className="w-5 h-5" />
+          </button>
           <button onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}>
             {isMobileMenuOpen ? <X /> : <Menu />}
           </button>

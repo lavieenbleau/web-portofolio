@@ -4,6 +4,7 @@ import { useEffect, useRef } from "react"
 import { gsap } from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
 import Image from "next/image"
+import { Download } from "lucide-react"
 import { projects } from "@/data/projects"
 
 gsap.registerPlugin(ScrollTrigger)
@@ -101,9 +102,20 @@ export function About() {
             Designing and building with <span className="text-primary italic">purpose</span>.
           </h3>
           
-          <p className="text-lg text-neutral-600 dark:text-neutral-400 mb-6 leading-relaxed">
+          <p className="text-lg text-neutral-600 dark:text-neutral-400 mb-8 leading-relaxed">
             Saya adalah Creative Designer dan Web Developer yang menggabungkan kreativitas dan teknologi untuk menciptakan website, aplikasi, dan pengalaman digital yang modern serta mudah digunakan.
           </p>
+
+          <div className="mb-10">
+            <a 
+              href="/projects/CV.pdf" 
+              download="Faisal_Anugrah_CV.pdf"
+              className="inline-flex items-center gap-2 px-8 py-4 bg-primary text-white font-medium rounded-full hover:bg-primary/90 transition-all duration-300 transform hover:-translate-y-1 shadow-lg shadow-primary/25"
+            >
+              <Download className="w-5 h-5" />
+              Download CV
+            </a>
+          </div>
 
           <div className="grid grid-cols-3 gap-8 pt-8 border-t border-border">
             <div>
